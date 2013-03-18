@@ -1,0 +1,27 @@
+<h1>Listing stacks</h1>
+
+<table>
+  <tr>
+    <th>Finished</th>
+    <th>Max size</th>
+    <th>Active</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @stacks.each do |stack| %>
+  <tr>
+    <td><%= stack.finished %></td>
+    <td><%= stack.max_size %></td>
+    <td><%= stack.active %></td>
+    <td><%= link_to 'Show', stack %></td>
+    <td><%= link_to 'Edit', edit_stack_path(stack) %></td>
+    <td><%= link_to 'Destroy', stack, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Stack', new_stack_path %>

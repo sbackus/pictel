@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Finished:</b>
+  <%= @stack.finished %>
+</p>
+
+<p>
+  <b>Max size:</b>
+  <%= @stack.max_size %>
+</p>
+
+<p>
+  <b>Active:</b>
+  <%= @stack.active %>
+</p>
+
+
+<%= link_to 'Edit', edit_stack_path(@stack) %> |
+<%= link_to 'Back', stacks_path %>

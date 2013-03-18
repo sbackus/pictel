@@ -1,29 +1,26 @@
-<%= form_for(@stack) do |f| %>
-  <% if @stack.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@stack.errors.count, "error") %> prohibited this stack from being saved:</h2>
-
-      <ul>
-      <% @stack.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+<%= form_for @stack, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :finished, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :finished, :class => 'check_box' %>
     </div>
-  <% end %>
+  </div>
+  <div class="control-group">
+    <%= f.label :max_size, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :max_size, :class => 'number_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :active, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :active, :class => 'check_box' %>
+    </div>
+  </div>
 
-  <div class="field">
-    <%= f.label :finished %><br />
-    <%= f.check_box :finished %>
-  </div>
-  <div class="field">
-    <%= f.label :max_size %><br />
-    <%= f.number_field :max_size %>
-  </div>
-  <div class="field">
-    <%= f.label :active %><br />
-    <%= f.check_box :active %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                stacks_path, :class => 'btn' %>
   </div>
 <% end %>

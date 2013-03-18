@@ -1,27 +1,40 @@
-<h1>Listing stacks</h1>
-
-<table>
-  <tr>
-    <th>Finished</th>
-    <th>Max size</th>
-    <th>Active</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @stacks.each do |stack| %>
-  <tr>
-    <td><%= stack.finished %></td>
-    <td><%= stack.max_size %></td>
-    <td><%= stack.active %></td>
-    <td><%= link_to 'Show', stack %></td>
-    <td><%= link_to 'Edit', edit_stack_path(stack) %></td>
-    <td><%= link_to 'Destroy', stack, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
+<%- model_class = Stack -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:finished) %></th>
+      <th><%= model_class.human_attribute_name(:max_size) %></th>
+      <th><%= model_class.human_attribute_name(:active) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @stacks.each do |stack| %>
+      <tr>
+        <td><%= link_to stack.id, stack_path(stack) %></td>
+        <td><%= stack.finished %></td>
+        <td><%= stack.max_size %></td>
+        <td><%= stack.active %></td>
+        <td><%=l stack.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_stack_path(stack), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      stack_path(stack),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
 
-<br />
-
-<%= link_to 'New Stack', new_stack_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_stack_path,
+            :class => 'btn btn-primary' %>

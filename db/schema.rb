@@ -11,7 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130318200332) do
+ActiveRecord::Schema.define(:version => 20130318201622) do
+
+  create_table "cards", :force => true do |t|
+    t.string   "author"
+    t.boolean  "current"
+    t.text     "data_text"
+    t.string   "data_picture"
+    t.string   "type"
+    t.integer  "stack_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
 
   create_table "players", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

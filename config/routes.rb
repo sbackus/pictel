@@ -1,7 +1,9 @@
 Pictel::Application.routes.draw do
   devise_for :players
 
-  resources :stacks
+  resources :stacks do
+    resources :cards
+  end
 
 
   # The priority is based upon order of creation:

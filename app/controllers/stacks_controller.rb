@@ -41,6 +41,16 @@ class StacksController < ApplicationController
   # GET /stacks/1/edit
   def edit
     @stack = Stack.find(params[:id])
+    if @stack.cards.last_card_type == "TextCard"
+      redirect_to new_stack_picture_card_path(@stack)
+    else
+      redirect_to new_stack_card_path(@stack)    
+    end  
+
+
+    # Below code allows to edit the stack
+    # @stack = Stack.find(params[:id])
+
   end
 
   # POST /stacks

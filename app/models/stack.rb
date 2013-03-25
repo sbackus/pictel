@@ -4,17 +4,20 @@ class Stack < ActiveRecord::Base
   # attr_accessor_with_default :active, true
 
   def self.inactive
-    where(active: false)
+    # TO DO: CHANGE THIS TO FALSE
+    where(active: true)
   end
 
   def self.unfinished
     where(finished: false)
   end
 
-  
+  def self.sort_card_count
+    order("cards_count DESC")
+  end
 
   def self.next_stack
-    order("created_at asc").last.type
+    inactive.unfinished.sort_card_count.last
   end
 
   #A stack starts off unfinished

@@ -40,7 +40,7 @@ class StacksController < ApplicationController
 
   # GET /stacks/1/edit
   def edit
-    @stack = Stack.find(params[:id])
+    @stack = Stack.next_stack
     if @stack.cards.last_card_type == "TextCard"
       redirect_to new_stack_picture_card_path(@stack)
     else
@@ -97,3 +97,4 @@ class StacksController < ApplicationController
     end
   end
 end
+

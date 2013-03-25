@@ -25,26 +25,29 @@ class CardsController < ApplicationController
 
 	def create
 		#@card = current_stack.new
-		@card = Card.new
+		@card = TextCard.new
 		@card.stack_id = current_stack.id
 		
 		@card.author = params[:card][:author]
+		@card.data_text = params[:card][:data_text]
+		if @card.save 
+			redirect_to new_stack_picture_card_path(current_stack)
+		end
 
-    respond_to do |format|
-      if @card.save    
-        format.html show.html.erb #{ redirect_to @cards, notice: 'Stack was successfully created.' }
-        format.json { render json: @cards, status: :created, location: @card }
+    # respond_to do |format|
+    #   if @card.save    
+    #     format.html show.html.erb #{ redirect_to @cards, notice: 'Stack was successfully created.' }
+    #     format.json { render json: @cards, status: :created, location: @card }
 
-      else
-        format.html { render action: "new" }
-        format.json { render json: @cards.errors, status: :unprocessable_entity }
-      end
-    end		
+    #   else
+    #     format.html { render action: "new" }
+    #     format.json { render json: @cards.errors, status: :unprocessable_entity }
+    #   end
+    # end		
 	end
 
   def show
-    puts "********** The Params ID is: " + params[:id]
-    @card = Card.find(params[:id])
+    @card = TextCard.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb

@@ -1,1 +1,16 @@
-<h1>This is show.html.erb woohoo </h1>
+<h1>This is index.html.erb woohoo </h1>
+
+<table class="table table-striped">
+
+  <tbody>
+    <% @cards.each do |card| %>
+      <tr>
+        <td><%= card.author %></td>
+        <td><%= card.stack_id %></td>
+        <td>
+
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

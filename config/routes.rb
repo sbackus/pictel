@@ -1,8 +1,10 @@
 Pictel::Application.routes.draw do
   devise_for :players
+  resources :cards
 
   resources :stacks do
-    resources :cards
+    resources :cards, :only => [:new, :create]
+
   end
 
 

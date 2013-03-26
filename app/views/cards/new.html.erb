@@ -1,5 +1,7 @@
 <h1>HELLO WORLD</h1>
 
+<h1><%= @picture_card.data_picture %></h1>
+
 <%= simple_form_for [@stack, @card] do |f| %>
   <%= f.input :author %>
   <%= f.input :data_text %>

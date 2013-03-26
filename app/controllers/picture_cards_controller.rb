@@ -19,17 +19,10 @@ def new
 		@card.author = params[:picture_card][:author]
 		@card.data_picture = params[:picture_card][:data_picture]
 
-
-    respond_to do |format|
-      if @card.save    
-        format.html show.html.erb #{ redirect_to @cards, notice: 'Stack was successfully created.' }
-        format.json { render json: @cards, status: :created, location: @card }
-
-      else
-        format.html { render action: "new" }
-        format.json { render json: @cards.errors, status: :unprocessable_entity }
-      end
-    end		
+		if @card.save 
+			redirect_to edit_stack_path(current_stack)
+		end
+	
 	end
 
 private 

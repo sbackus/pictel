@@ -28,14 +28,10 @@ class StacksController < ApplicationController
     @stack.set_default_attributes
     # TO DO - DON'T HAVE IT CREATE A NEW THING IN A DATABASE, YET
     @stack.save
+    
     #redirect to create a new card
     redirect_to new_stack_card_path(@stack)
 
-    
-   # respond_to do |format|
-   #   format.html # new.html.erb
-   #   format.json { render json: @stack }
-   # end
   end
 
   # GET /stacks/1/edit

@@ -3,6 +3,7 @@ class Stack < ActiveRecord::Base
   #When a stack is created, it is active
   # attr_accessor_with_default :active, true
 
+
   def self.inactive
     # TO DO: CHANGE THIS TO FALSE
     where(active: true)

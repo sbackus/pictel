@@ -12,7 +12,9 @@ class CardsController < ApplicationController
   end	
 
 	def new
-		@stack = Stack.find(params[:stack_id])
+    @picture_card = current_stack.cards.last
+
+    @stack = Stack.find(params[:stack_id])
 		@card = Card.new
 	#	@card.stack = @stack
 
@@ -31,7 +33,7 @@ class CardsController < ApplicationController
 		@card.author = params[:card][:author]
 		@card.data_text = params[:card][:data_text]
 		if @card.save 
-			redirect_to new_stack_picture_card_path(current_stack)
+			redirect_to edit_stack_path(current_stack)
 		end
 
     # respond_to do |format|

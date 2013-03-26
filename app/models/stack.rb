@@ -17,8 +17,12 @@ class Stack < ActiveRecord::Base
     order("cards_count DESC")
   end
 
+  def self.not_empty
+    where("cards_count != '0'")
+  end
+
   def self.next_stack
-    inactive.unfinished.sort_card_count.last
+    inactive.unfinished.not_empty.sort_card_count.last
   end
 
   #A stack starts off unfinished

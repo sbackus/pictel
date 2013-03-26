@@ -28,9 +28,17 @@ class StacksController < ApplicationController
     @stack.set_default_attributes
     # TO DO - DON'T HAVE IT CREATE A NEW THING IN A DATABASE, YET
     @stack.save
-    
+    @card = Card.new
+    @card.type = "TextCard"
+    @card.stack_id = @stack.id
     #redirect to create a new card
-    redirect_to new_stack_card_path(@stack)
+    # redirect_to new_stack_card_path(@stack)
+
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: @cards }
+    end
 
   end
 
@@ -52,17 +60,23 @@ class StacksController < ApplicationController
   # POST /stacks
   # POST /stacks.json
   def create
-    @stack = Stack.new(params[:stack])
+    
 
-    respond_to do |format|
-      if @stack.save
-        format.html { redirect_to @stack, notice: 'Stack was successfully created.' }
-        format.json { render json: @stack, status: :created, location: @stack }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @stack.errors, status: :unprocessable_entity }
-      end
+
+    @card.author = params[:card][:author]
+    @card.data_text = params[:card][:data_text]
+    if @card.save 
+      redirect_to edit_stack_path(current_stack)
     end
+    # respond_to do |format|
+    #   if @stack.save
+    #     format.html { redirect_to @stack, notice: 'Stack was successfully created.' }
+    #     format.json { render json: @stack, status: :created, location: @stack }
+    #   else
+    #     format.html { render action: "new" }
+    #     format.json { render json: @stack.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # PUT /stacks/1

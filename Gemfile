@@ -20,6 +20,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+gem "paperclip", "~> 3.0"
 gem 'haml-rails', '>= 0.3.4', :group => :development
 
 gem 'jquery-rails'

@@ -2,6 +2,7 @@ class PictureCardsController < ApplicationController
 
 def new
 		@stack = Stack.find(params[:stack_id])
+		@text_card = @stack.cards.last
 		@card = PictureCard.new
 
 		respond_to do |format|

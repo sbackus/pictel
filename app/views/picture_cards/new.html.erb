@@ -1,10 +1,20 @@
-<h1>New Picture Card</h1>
+<h1>Draw this: <%= @text_card.data_text %></h1>
 
 <%= simple_form_for [@stack, @card] do |f| %>
   <%= f.input :author %>
-  <%= f.input :data_picture %>
+  <%= f.hidden_field :data_picture %>
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script src='../src/sketch.js'></script>
+    <script> 
+      $(function() {
+        var canvas = document.getElementById('colored_sketch');
+        var url = canvas.toDataURL('image/png');
+        $('#new_picture_card').submit(function() {
+          $('#picture_card_data_picture').val(canvas.toDataURL());
+        });
+      });
+    </script>
+    
     <script type='text/javascript'>
       $(function() {
         $.each(['#f00', '#ff0', '#0f0', '#0ff', '#00f', '#000', '#fff'], function() {

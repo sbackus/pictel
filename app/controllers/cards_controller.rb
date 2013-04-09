@@ -30,7 +30,7 @@ class CardsController < ApplicationController
 		@card = TextCard.new
 		@card.stack_id = current_stack.id
 		
-		@card.author = params[:card][:author]
+		@card.author = current_player.email
 		@card.data_text = params[:card][:data_text]
 		if @card.save 
 			redirect_to edit_stack_path(current_stack)

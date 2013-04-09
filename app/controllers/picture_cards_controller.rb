@@ -17,7 +17,7 @@ def new
 		@card = PictureCard.new
 		@card.stack_id = current_stack.id
 		
-		@card.author = params[:picture_card][:author]
+		@card.author = current_player.email
 		@card.data_picture = params[:picture_card][:data_picture]
 
 		if @card.save 

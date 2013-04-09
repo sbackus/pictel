@@ -1,4 +1,6 @@
 class StacksController < ApplicationController
+
+  before_filter :authenticate_player!
   # GET /stacks
   # GET /stacks.json
   def index

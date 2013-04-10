@@ -1,7 +1,6 @@
 <h1>Draw this: <%= @text_card.data_text %></h1>
 
 <%= simple_form_for [@stack, @card] do |f| %>
-  <%= f.input :author %>
   <%= f.hidden_field :data_picture %>
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script src='../src/sketch.js'></script>

@@ -24,6 +24,8 @@
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_stack_path(stack), :class => 'btn btn-mini' %>
+          <%= link_to t('.show', :default => t("helpers.links.show")),
+                      stack_path(stack), :class => 'btn btn-mini' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                       stack_path(stack),
                       :method => :delete,

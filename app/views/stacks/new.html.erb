@@ -1,7 +1,6 @@
 <!-- <%= render :partial => 'form' %> -->
 <h1>New Stack</h1>   
 <%= simple_form_for [@stack, @card] do |f| %>
-  <%= f.input :author %>
   <%= f.input :data_text %>
 
   <%= f.button :submit %>

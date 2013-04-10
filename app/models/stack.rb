@@ -21,8 +21,18 @@ class Stack < ActiveRecord::Base
     where("cards_count != '0'")
   end
 
-  def self.next_stack
-    inactive.unfinished.not_empty.sort_card_count.last
+  def self.not_user(email) 
+    where("cards.author != 'email'")
+  end
+
+  def self.next_stack(email)
+
+    inactive.unfinished.not_empty.sort_card_count.each do |stack|
+      if stack.cards.last.author != email
+        return stack
+      end
+    end
+    return nil
   end
 
   #A stack starts off unfinished

@@ -10,7 +10,15 @@
   <dd><%= @stack.max_size %></dd>
   <dt><strong><%= model_class.human_attribute_name(:active) %>:</strong></dt>
   <dd><%= @stack.active %></dd>
-  <%= @stack.cards %>
+  <% @stack.cards.each do |card| %>
+    <% if card.type == "PictureCard" %>
+      <%= image_tag(card.data_picture) %>
+    <% else %>
+      <%= card.data_text %>
+    <% end %>
+  <% end %> 
+
+
 </dl>
 
 <div class="form-actions">

@@ -46,13 +46,20 @@ class StacksController < ApplicationController
 
   # GET /stacks/1/edit
   def edit
-    @stack = Stack.next_stack
-    if @stack.cards.last_card_type == "TextCard"
-      redirect_to new_stack_picture_card_path(@stack)
+    @stack = Stack.next_stack(current_player.email)
+    puts("XXXXXXX_-----------------XXXXXXXxX")
+    puts(@stack)
+    if @stack.nil?
+      puts("XXXXXXX_--------GOES THROUGH IF GATE")
+      redirect_to stacks_path
     else
-      redirect_to new_stack_card_path(@stack)    
-    end  
 
+      if @stack.cards.last_card_type == "TextCard"
+        redirect_to new_stack_picture_card_path(@stack)
+      else
+        redirect_to new_stack_card_path(@stack)    
+      end  
+    end
 
     # Below code allows to edit the stack
     # @stack = Stack.find(params[:id])

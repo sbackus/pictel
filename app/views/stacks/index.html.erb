@@ -9,7 +9,6 @@
       <th><%= model_class.human_attribute_name(:finished) %></th>
       <th><%= model_class.human_attribute_name(:max_size) %></th>
       <th><%= model_class.human_attribute_name(:active) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -20,7 +19,6 @@
         <td><%= stack.finished %></td>
         <td><%= stack.max_size %></td>
         <td><%= stack.active %></td>
-        <td><%=l stack.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_stack_path(stack), :class => 'btn btn-mini' %>

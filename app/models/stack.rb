@@ -6,7 +6,7 @@ class Stack < ActiveRecord::Base
 
   def self.inactive
     # TO DO: CHANGE THIS TO FALSE
-    where(active: true)
+    where(active: false)
   end
 
   def self.unfinished

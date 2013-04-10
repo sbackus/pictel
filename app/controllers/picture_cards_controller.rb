@@ -4,7 +4,8 @@ def new
 		@stack = Stack.find(params[:stack_id])
 		@text_card = @stack.cards.last
 		@card = PictureCard.new
-
+		current_stack.active = true
+		current_stack.save  
 		respond_to do |format|
     	format.html # new.html.erb
     	format.json { render json: @cards }
@@ -21,6 +22,8 @@ def new
 		@card.data_picture = params[:picture_card][:data_picture]
 
 		if @card.save 
+			current_stack.active = false
+			current_stack.save  
 			redirect_to edit_stack_path(current_stack)
 		end
 	

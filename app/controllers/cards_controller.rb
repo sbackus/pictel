@@ -16,6 +16,10 @@ class CardsController < ApplicationController
 
     @stack = Stack.find(params[:stack_id])
 		@card = Card.new
+    current_stack.active = true
+    puts("XXXXXXXXXXX------------------------------XXXXXXXXXXXXXX")
+    puts(current_stack)
+    current_stack.save    
 	#	@card.stack = @stack
 
 		respond_to do |format|
@@ -32,7 +36,9 @@ class CardsController < ApplicationController
 		
 		@card.author = current_player.email
 		@card.data_text = params[:card][:data_text]
-		if @card.save 
+		if @card.save
+      current_stack.active = false 
+      current_stack.save  
 			redirect_to edit_stack_path(current_stack)
 		end
 

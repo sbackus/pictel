@@ -47,10 +47,8 @@ class StacksController < ApplicationController
   # GET /stacks/1/edit
   def edit
     @stack = Stack.next_stack(current_player.email)
-    puts("XXXXXXX_-----------------XXXXXXXxX")
-    puts(@stack)
+
     if @stack.nil?
-      puts("XXXXXXX_--------GOES THROUGH IF GATE")
       redirect_to stacks_path
     else
 
@@ -68,13 +66,11 @@ class StacksController < ApplicationController
 
   # POST /stacks
   # POST /stacks.json
-  def create
-    
-
-
+  def create    
     @card.author = params[:card][:author]
     @card.data_text = params[:card][:data_text]
     if @card.save 
+      current_stack.active = false
       redirect_to edit_stack_path(current_stack)
     end
     # respond_to do |format|

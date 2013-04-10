@@ -14,7 +14,7 @@
     <% if card.type == "PictureCard" %>
       <%= image_tag(card.data_picture) %>
     <% else %>
-      <%= card.data_text %>
+      <h1><%= card.data_text %></h1>
     <% end %>
   <% end %> 
 

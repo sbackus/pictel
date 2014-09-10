@@ -1,0 +1,32 @@
+<h1>Draw this: <%= @text_card.data_text %></h1>
+
+<%= simple_form_for [@stack, @card] do |f| %>
+  <%= f.hidden_field :data_picture %>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src='../src/sketch.js'></script>
+    <script> 
+      $(function() {
+        var canvas = document.getElementById('colored_sketch');
+        var url = canvas.toDataURL('image/png');
+        $('#new_picture_card').submit(function() {
+          $('#picture_card_data_picture').val(canvas.toDataURL());
+        });
+      });
+    </script>
+    
+    <script type='text/javascript'>
+      $(function() {
+        $.each(['#f00', '#ff0', '#0f0', '#0ff', '#00f', '#000', '#fff'], function() {
+          $('#tools').append("<a href='#colored_sketch' data-color='" + this + "' style='border: 1px solid black; width: 30px; height: 30px; background: " + this + "; display: inline-block;'></a> ");
+        });
+
+        $('#colored_sketch').sketch();
+      });
+    </script>
+
+    <div id='tools'>
+    <a href="#colored_sketch" data-download="png" style="float: right; width: 100px;">Download</a>
+    </div>
+    <canvas id='colored_sketch' width='400' height='400' style='border: 2px solid black'></canvas>
+  <%= f.button :submit %>
+<% end %>

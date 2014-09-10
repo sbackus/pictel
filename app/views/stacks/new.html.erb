@@ -1,0 +1,7 @@
+<!-- <%= render :partial => 'form' %> -->
+<h1>Write a word or phrase!</h1>   
+<%= simple_form_for [@stack, @card] do |f| %>
+  <%= f.input :data_text %>
+
+  <%= f.button :submit %>
+<% end %>

@@ -1,0 +1,2 @@
+module PictureCardsHelper
+end

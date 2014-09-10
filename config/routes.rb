@@ -1,4 +1,14 @@
 Pictel::Application.routes.draw do
+  devise_for :players
+  resources :cards
+  resources :picture_cards
+  
+  resources :stacks do
+    resources :cards, :only => [:new, :create]
+    resources :picture_cards, :only => [:new, :create]
+  end
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -48,7 +58,7 @@ Pictel::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+  root :to => 'stacks#index'
 
   # See how all your routes lay out with "rake routes"
 

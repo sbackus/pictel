@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  finished: false
+  max_size: 1
+  active: false
+
+two:
+  finished: false
+  max_size: 1
+  active: false

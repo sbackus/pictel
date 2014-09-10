@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  isText: false
+  author: MyString
+  current: false
+  dataText: MyText
+  dataPicture: MyString
+
+two:
+  isText: false
+  author: MyString
+  current: false
+  dataText: MyText
+  dataPicture: MyString
